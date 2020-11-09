@@ -7,9 +7,9 @@ class Complex():
     def __sub__(self, other):
         return Complex(self.x - other.x, self.y - other.y)
     def __truediv__(self, other):
-        return Complex(self.x / other.x, self.y / other.y)
+        return Complex((self.x * other.x + self.y*other.y)/(other.x**2+other.y**2), (self.y * other.x - self.x*other.y)/(other.x**2+other.y**2))
     def __mul__(self, other):
-        return Complex(self.x * other.x, self.y * other.y)
+        return Complex(self.x * other.x-self.y*other.y, self.x * other.y+self.y*other.x)
     def __abs__(self):
         return Complex((self.x**2+self.y**2)**(1/2) , 0)
     def __str__(self):
@@ -25,6 +25,6 @@ class Complex():
         return pr
 
 a=Complex(-2,1)
-b=Complex(3,0)
-print(a)
+b=Complex(1,-1)
+print(a/b)
 print(abs(b-a))

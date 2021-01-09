@@ -1,11 +1,8 @@
 # coding: utf-8
 # license: GPLv3
-from random import choice
 from hero import *
 
-def generate_artifacts():
-    enemy_list = [artifact_types[i] for i in range(len(artifact_types))]
-    return enemy_list
+
 
 class Artifacts():
     def __init__(self):

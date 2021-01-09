@@ -9,11 +9,11 @@ def generate_artifacts():
     return enemy_list
 spisok=generate_artifacts()
 
-class shop():
-    def __init__(self):
-        self._assortment = []
-        self._color= None
-        self._artifacts= spisok
+class Shop():
+    _assortment = []
+    _color= None
+    _artifacts= spisok
+    _place='мирное'
 
 
     def generate(self, ot, do):
@@ -21,37 +21,48 @@ class shop():
         for i in range(randint(ot,do)):
             mass.append(self._artifacts[randint(0,4)])
         self._assortment=mass
-        for i in range(len(self._assortment)):
-            print('Ассортимент:',self._assortment[i]._name)
+
 
     def balance(self):
         print(hero._money)
 
-class small_shop(shop):
-    def info(self):
-        print('В этом магазине вы можете продать свои вещи и купить 1 артефакт')
-    def assortment(self):
-        if len(self._assortment)==0:
-            self.generate(1, 1)
-
     def buy(self,hero,name):
-        if len(self._assortment) == 0:
-            self.generate(1, 1)
         for i in range(len(self._assortment)):
             if self._assortment[i] == name:
                 if hero._money > name._cost:
                     name._amount +=1
                     print('Вы купили {}'.format(name._name))
+                    return
+        print('{} нет в наличии'.format(name._name))
+    def assortment(self):
+        print('Ассортимент:',end='')
+        for i in range(len(self._assortment)):
+            print(self._assortment[i]._name, end=', ')
+        print()
 
-class average_shop(shop):
+
+
+class Small_shop(Shop):
+    def __init__(self):
+        self.generate(1, 1)
+    def info(self):
+        print('В этом магазине вы можете продать свои вещи и купить 1 артефакт')
+
+
+class Average_shop(Shop):
+    def __init__(self):
+        self.generate(1, 3)
     def info(self):
         print('В этом магазине вы можете продать свои вещи и купить от 1 до 3 артефактов')
 
-class big_shop(shop):
+
+class Big_shop(Shop):
+    def __init__(self):
+        self.generate(3, 5)
     def info(self):
         print('В этом магазине вы можете продать свои вещи и купить от 3 до 5 артефактов')
 
-spisok_shops=[small_shop, average_shop, big_shop]
+
 
 
 #     print('Вы посетили магазин. На вашем счету {} денег'.format(hero._money))

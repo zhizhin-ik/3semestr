@@ -1,7 +1,7 @@
 # coding: utf-8
 # license: GPLv3
 from gameunit import *
-from random import randint, choice
+from random import randint
 
 class Enemy(Attacker):
     pass
@@ -53,4 +53,3 @@ class BlackDragon(Dragon):
         self.__quest = str(x) + '*' + str(y)
         self.set_answer(x * y)
         return self.__quest
-

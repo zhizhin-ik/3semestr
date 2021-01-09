@@ -14,9 +14,9 @@ def annoying_input_int(message =''):
             print('Вы ввели недопустимые символы')
     return answer
 
-def game_tournament(hero, dragon_list):
-    for mesto in dragon_list._location:
-        if mesto._color:
+def game_tournament(hero, location_list):
+    for mesto in location_list:
+        if mesto._place=='боевое':
             dragon = mesto
             print('Вышел', dragon._color, 'дракон!')
             while dragon.is_alive() and hero.is_alive():
@@ -36,11 +36,11 @@ def game_tournament(hero, dragon_list):
             hero.money()
             print('Ваш накопленный опыт:', hero._experience)
             print('Ваши накопленные деньги:', hero._money)
-        else:
+        if mesto._place == 'мирное':
             shop=mesto
             shop.info()
             shop.assortment()
-            shop.buy(hero,apple)
+            shop.buy(hero,Apple)
 
 
     if hero.is_alive():
@@ -56,10 +56,9 @@ def start_game():
         print('Представьтесь, пожалуйста: ', end = '')
         hero = Hero(input())
 
-        dragon_number = 3
-        dragon_list = Location()
-        dragon_list.generate_dragon_list(dragon_number)
-        game_tournament(hero, dragon_list)
+        number_of_locations = 3
+        location_list=generate_location_list(number_of_locations)
+        game_tournament(hero, location_list)
 
     except EOFError:
         print('Поток ввода закончился. Извините, принимать ответы более невозможно.')

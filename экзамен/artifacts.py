@@ -1,7 +1,5 @@
 # coding: utf-8
 # license: GPLv3
-from hero import *
-
 
 
 class Artifacts():
@@ -11,33 +9,33 @@ class Artifacts():
         self._amount= None
 
 
-class apple(Artifacts):
+class Apple(Artifacts):
     _amount=0
     _name='apple'
     _cost=50
 
-class marker(Artifacts):
+class Marker(Artifacts):
     _amount = 0
     _name = 'marker'
     _cost=60
 
 
-class shield(Artifacts):
+class Shield(Artifacts):
     _amount = 0
     _name = 'shield'
     _cost =70
 
 
-class rebirth(Artifacts):
+class Rebirth(Artifacts):
     _amount = 0
     _name = 'rebirth'
     _cost =80
 
 
-class wings(Artifacts):
+class Wings(Artifacts):
     _amount = 0
     _name = 'wings'
     _cost =90
 
 
-artifact_types=[apple, marker, shield, rebirth, wings]
+artifact_types=[Apple, Marker, Shield, Rebirth, Wings]

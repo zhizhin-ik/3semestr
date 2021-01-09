@@ -1,21 +1,21 @@
 # coding: utf-8
 # license: GPLv3
 from enemies import *
-from random import randint, choice
+from random import choice
 from shop import *
 
 class Location:
+    _place = None
     _location = []
 
-    def generate_random_enemy(self):
-        RandomEnemyType = choice(enemy_types)
-        enemy = RandomEnemyType()
-        return enemy
+def generate_random_enemy():
+    RandomEnemyType = choice(enemy_types)
+    enemy = RandomEnemyType()
+    return enemy
 
 
-    def generate_dragon_list(self,enemy_number):
-        enemy_list= [self.generate_random_enemy() for i in range(enemy_number)]
-        self._location=enemy_list
-        return enemy_list
-enemy_types = [small_shop]
-#enemy_types = [GreenDragon, RedDragon, BlackDragon, small_shop, average_shop, big_shop]
+def generate_location_list(number_of_locations):
+    enemy_list= [generate_random_enemy() for i in range(number_of_locations)]
+    return enemy_list
+#enemy_types = [Small_shop, Average_shop, Big_shop]
+enemy_types = [GreenDragon, RedDragon, BlackDragon, Small_shop, Average_shop, Big_shop]

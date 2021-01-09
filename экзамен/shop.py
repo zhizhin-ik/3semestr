@@ -17,13 +17,18 @@ def shop(hero):
             break
         else:
             print('Выберите номер артефакта, который хотите продать')
-            number = check_number_2(hero)
+            number = check_number_2()
+            if artifacts[number - 1]._amount !=0:
+                hero._money+=artifacts[number-1]._cost
+                artifacts[number - 1]._amount -= 1
+                print('Вы продали {}. Теперь на вашем счету {} денег'.format(artifacts[number - 1]._name,hero._money))
+            else:
+                print('Вы не можете продать этот предмет, так как у вас его нет')
 
-
+    print('Вы можете купить:')
+    for nomer, artifact in enumerate(artifacts):
+        print('{}.{} за {}'.format(nomer + 1, artifact._name, artifact._cost))
     while True:
-        print('Вы можете купить:')
-        for nomer, artifact in enumerate(artifacts):
-            print('{}.{} за {}'.format(nomer+1,artifact._name, artifact._cost))
         print('Выберите номер артефакта, который хотите приобрести или 0, если хотите покинуть магазин.')
         number=check_number_3()
         if number==0:
@@ -53,7 +58,7 @@ def check_number_1():
 
 
 
-def check_number_3():
+def check_number_2():
     number = None
     correct_numbers = [1, 2, 3, 4, 5]
     while number == None:
